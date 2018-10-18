@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>rocketchat</id>
+    <version>2.14.0</version>
+    <packageSourceUrl>https://github.com/Sierra1011/chocolateyPackage/tree/master/rocketchatelectron-choco</packageSourceUrl>
+    <owners>Sierra1011</owners>
+    <title>Rocket.Chat</title>
+    <authors>Rocket.Chat</authors>
+    <projectUrl>https://rocket.chat/ </projectUrl>
+    <iconUrl>https://github.com/Sierra1011/chocolateyPackage/blob/master/rocketchatelectron-choco/1024x1024-circle.png</iconUrl>
+    <licenseUrl>https://github.com/RocketChat/Rocket.Chat.Electron/blob/develop/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/RocketChat/Rocket.Chat.Electron</projectSourceUrl>
+    <docsUrl>https://rocket.chat/docs/</docsUrl>
+    <mailingListUrl>https://rocket.chat/contact</mailingListUrl>
+    <bugTrackerUrl>https://github.com/RocketChat/Rocket.Chat.Electron/issues</bugTrackerUrl>
+    <tags>rocket.chat rocketchat admin chat IM</tags>
+    <summary>Official OSX, Windows, and Linux Desktop Clients for Rocket.Chat https://rocket.chat/ </summary>
+    <description>
+    The ultimate Free Open Source Solution for team communications.
+    Rocket.Chat is free, unlimited and open source. Replace email, HipChat and Slack with the ultimate team chat software solution.
+    Communicate and collaborate using team chat and switch to video or audio calls with screen sharing for more efficient teamwork.
+    Improve productivity by discussing and sharing ideas, projects and files with real-time or asynchronous team chat.
+    With complete access to the source code, you can fully customize, extend or add new functionality to meet your requirements.
+    With Rocket.Chat LiveChat you can add real-time chat widgets to any website or mobile app and get more value from your team chat.
+    Replace other systems and use one communication platform to save time and money. Create a user support helpdesk, answer customer queries and convert leads.
+    </description>
+    <releaseNotes>
+    New Features
+      #899 Optional status on tray for MacOS (https://github.com/RocketChat/Rocket.Chat.Electron/pull/899)
+      #905 Add copy link in the context menu (https://github.com/RocketChat/Rocket.Chat.Electron/pull/905)
+      #907 Disable autoupdate on windows installer (https://github.com/RocketChat/Rocket.Chat.Electron/pull/907)
+      #911 Documentation to disable Autoupdates (https://github.com/RocketChat/Rocket.Chat.Electron/pull/911)
+    
+    Improvements
+      #887 Update ESLint rules following Rocket.Chat guidelines (https://github.com/RocketChat/Rocket.Chat.Electron/pull/887)
+    
+    Bug Fixes
+      #889 About dialog (https://github.com/RocketChat/Rocket.Chat.Electron/pull/889)
+      #895 Menus (https://github.com/RocketChat/Rocket.Chat.Electron/pull/895)
+      #884 Show tray icon status again (https://github.com/RocketChat/Rocket.Chat.Electron/pull/884)
+      #900 Tray icon module (https://github.com/RocketChat/Rocket.Chat.Electron/pull/900)
+      #902 Tray icon sizes for Linux (https://github.com/RocketChat/Rocket.Chat.Electron/pull/902)
+      #912 Condition to quit on window close (https://github.com/RocketChat/Rocket.Chat.Electron/pull/912)
+      #913 Show window on second instance running (https://github.com/RocketChat/Rocket.Chat.Electron/pull/913)
+    
+    Others
+      #916 Change back and forward shortcuts (https://github.com/RocketChat/Rocket.Chat.Electron/pull/916)
+  
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
