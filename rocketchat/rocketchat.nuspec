@@ -8,7 +8,7 @@
     <title>Rocket.Chat</title>
     <authors>Rocket.Chat</authors>
     <projectUrl>https://rocket.chat/ </projectUrl>
-    <iconUrl>https://github.com/Sierra1011/chocolateyPackage/blob/master/rocketchatelectron-choco/1024x1024-circle.png</iconUrl>
+    <iconUrl>https://github.com/RocketChat/Rocket.Chat.Artwork/blob/master/Logos/icon-1024.png</iconUrl>
     <licenseUrl>https://github.com/RocketChat/Rocket.Chat.Electron/blob/develop/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <projectSourceUrl>https://github.com/RocketChat/Rocket.Chat.Electron</projectSourceUrl>
@@ -28,26 +28,13 @@
     </description>
     <releaseNotes>
     New Features
-      #899 Optional status on tray for MacOS (https://github.com/RocketChat/Rocket.Chat.Electron/pull/899)
-      #905 Add copy link in the context menu (https://github.com/RocketChat/Rocket.Chat.Electron/pull/905)
-      #907 Disable autoupdate on windows installer (https://github.com/RocketChat/Rocket.Chat.Electron/pull/907)
-      #911 Documentation to disable Autoupdates (https://github.com/RocketChat/Rocket.Chat.Electron/pull/911)
     
     Improvements
-      #887 Update ESLint rules following Rocket.Chat guidelines (https://github.com/RocketChat/Rocket.Chat.Electron/pull/887)
     
     Bug Fixes
-      #889 About dialog (https://github.com/RocketChat/Rocket.Chat.Electron/pull/889)
-      #895 Menus (https://github.com/RocketChat/Rocket.Chat.Electron/pull/895)
-      #884 Show tray icon status again (https://github.com/RocketChat/Rocket.Chat.Electron/pull/884)
-      #900 Tray icon module (https://github.com/RocketChat/Rocket.Chat.Electron/pull/900)
-      #902 Tray icon sizes for Linux (https://github.com/RocketChat/Rocket.Chat.Electron/pull/902)
-      #912 Condition to quit on window close (https://github.com/RocketChat/Rocket.Chat.Electron/pull/912)
-      #913 Show window on second instance running (https://github.com/RocketChat/Rocket.Chat.Electron/pull/913)
     
     Others
-      #916 Change back and forward shortcuts (https://github.com/RocketChat/Rocket.Chat.Electron/pull/916)
-  
+
     </releaseNotes>
   </metadata>
   <files>
