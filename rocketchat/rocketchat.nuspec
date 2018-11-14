@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>rocketchat</id>
-    <version>2.14.1</version>
+    <version>2.14.2</version>
     <packageSourceUrl>https://github.com/Sierra1011/chocolateyPackage/tree/master/rocketchatelectron-choco</packageSourceUrl>
     <owners>Sierra1011</owners>
     <title>Rocket.Chat</title>
@@ -35,28 +35,16 @@
     Create a user support helpdesk, answer customer queries and convert leads.
     </description>
     <releaseNotes>
-    New Features
-      #905 Add copy link in the context menu (https://github.com/RocketChat/Rocket.Chat.Electron/pull/905)
-      #907 Disable autoupdate on windows installer (https://github.com/RocketChat/Rocket.Chat.Electron/pull/907)
-      #911 Documentation to disable Autoupdates (https://github.com/RocketChat/Rocket.Chat.Electron/pull/911)
-      #914 Tray tooltip (https://github.com/RocketChat/Rocket.Chat.Electron/pull/914)
-
     Improvements
-      #933 App (main) page (https://github.com/RocketChat/Rocket.Chat.Electron/pull/933)
-      #932 Report issue menu item links to desktop app repository (https://github.com/RocketChat/Rocket.Chat.Electron/pull/932)
-      #916 Change back and forward shortcuts (https://github.com/RocketChat/Rocket.Chat.Electron/pull/916)
-
+      #968 Node 11 support (https://github.com/RocketChat/Rocket.Chat.Electron/pull/968)
+      
     Bug Fixes
-      #936 Autoupdate in MacOS (https://github.com/RocketChat/Rocket.Chat.Electron/pull/936)
-      #912 Condition to quit on window close (https://github.com/RocketChat/Rocket.Chat.Electron/pull/912)
-      #927 Disable autoupdates (https://github.com/RocketChat/Rocket.Chat.Electron/pull/927)
-      #931 Main window's visibility toggling in tray window (https://github.com/RocketChat/Rocket.Chat.Electron/pull/931)
-      #938 Move about menu item for MacOS (https://github.com/RocketChat/Rocket.Chat.Electron/pull/938)
-      #926 Preload issues (https://github.com/RocketChat/Rocket.Chat.Electron/pull/926)
-      #922 Server icon not displayed on sidebar if server url ending with a trailing slash (https://github.com/RocketChat/Rocket.Chat.Electron/pull/922)
-      #913 Show window on second instance running (https://github.com/RocketChat/Rocket.Chat.Electron/pull/913)
-      #941 Window closing behavior for Linux environments without a system tray (https://github.com/RocketChat/Rocket.Chat.Electron/pull/941)
-
+      #960 Autoupdate in MacOS (https://github.com/RocketChat/Rocket.Chat.Electron/pull/936)
+      #967 Condition to quit on window close (https://github.com/RocketChat/Rocket.Chat.Electron/pull/912)
+      #969 Disable autoupdates (https://github.com/RocketChat/Rocket.Chat.Electron/pull/927)
+      #949 Main window's visibility toggling in tray window (https://github.com/RocketChat/Rocket.Chat.Electron/pull/931)
+      #959 Move about menu item for MacOS (https://github.com/RocketChat/Rocket.Chat.Electron/pull/938)
+      
     </releaseNotes>
   </metadata>
   <files>
