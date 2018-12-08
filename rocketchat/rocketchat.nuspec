@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>rocketchat</id>
-    <version>2.14.4</version>
+    <version>2.14.6</version>
     <packageSourceUrl>https://github.com/Sierra1011/chocolateyPackage/tree/master/rocketchatelectron-choco</packageSourceUrl>
     <owners>Sierra1011</owners>
     <title>Rocket.Chat</title>
@@ -36,16 +36,9 @@
     </description>
     <releaseNotes>
     Bug Fixes
-      #1001 Check for updates response when an error occurs (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1001)
-      #1000 Notification errors (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1000)
-      #990 Speed up servers.json loading (https://github.com/RocketChat/Rocket.Chat.Electron/pull/990)
-
-    Others
-      #987 [IMPROVE] Update Russian translation (https://github.com/RocketChat/Rocket.Chat.Electron/pull/987)
-
-    Package Notes 
-      #Updating the package to correctly show the Rocket.Chat logo
-
+      # Add strings specifying why some permissions are needed in MacOS 
+      # Fix servers.json path resolution
+      
     </releaseNotes>
   </metadata>
   <files>
