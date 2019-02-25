@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>rocketchat</id>
-    <version>2.14.7</version>
+    <version>2.15.0</version>
     <packageSourceUrl>https://github.com/Sierra1011/chocolateyPackage/tree/master/rocketchatelectron-choco</packageSourceUrl>
     <owners>Sierra1011</owners>
     <title>Rocket.Chat</title>
@@ -28,8 +28,20 @@ Replace other systems and use one communication platform to save time and money.
     </description>
     <releaseNotes>
     Bug Fixes
-      # Main window destroyed when closing on MacOS
-      
+    #1028 The behavior of clicking links when running RocketChat with subdir. (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1028)
+    #1099 Updates preloads scripts to be compatible with Rocket.Chat >0.74.0 (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1099)
+    #1101 Use Electron notifications (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1101)
+    
+    Improvements
+    #1096 i18next (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1096)
+    #1093 New tray icons (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1093)
+    #1045 Pages and preload script changes (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1045)
+    #1076 Remove update-remind-later-dialog (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1076)
+    
+    Others
+    #1081 Disable artifact collection by AppVeyor (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1081)
+    #1074 Fix for basic-auth servers connect (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1074)
+    #1080 Fix remember window state on load (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1080)
     </releaseNotes>
   </metadata>
   <files>
