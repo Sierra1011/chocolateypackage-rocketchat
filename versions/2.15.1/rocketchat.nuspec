@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>rocketchat</id>
+    <version>2.15.1</version>
+    <packageSourceUrl>https://github.com/Sierra1011/chocolateyPackage/tree/master/rocketchatelectron-choco</packageSourceUrl>
+    <owners>Sierra1011</owners>
+    <title>Rocket.Chat</title>
+    <authors>Rocket.Chat</authors>
+    <projectUrl>https://rocket.chat/ </projectUrl>
+    <iconUrl>https://github.com/RocketChat/Rocket.Chat.Artwork/blob/master/Logos/icon.svg</iconUrl>
+    <licenseUrl>https://github.com/RocketChat/Rocket.Chat.Electron/blob/develop/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/RocketChat/Rocket.Chat.Electron</projectSourceUrl>
+    <docsUrl>https://rocket.chat/docs/</docsUrl>
+    <mailingListUrl>https://rocket.chat/contact</mailingListUrl>
+    <bugTrackerUrl>https://github.com/RocketChat/Rocket.Chat.Electron/issues</bugTrackerUrl>
+    <tags>rocket.chat rocketchat rocket.chat+ admin chat IM</tags>
+    <summary>Official OSX, Windows, and Linux Desktop Clients for Rocket.Chat https://rocket.chat/ </summary>
+    <description>
+The ultimate Free Open Source Solution for team communications. 
+Rocket.Chat is free, unlimited and open source. Replace email, HipChat and Slack with the ultimate team chat software solution.
+Communicate and collaborate using team chat and switch to video or audio calls with screen sharing for more efficient teamwork.
+Improve productivity by discussing and sharing ideas, projects and files with real-time or asynchronous team chat.
+With complete access to the source code, you can fully customize, extend or add new functionality to meet your requirements.
+With Rocket.Chat LiveChat you can add real-time chat widgets to any website or mobile app and get more value from your team chat.
+Replace other systems and use one communication platform to save time and money. 
+    </description>
+    <releaseNotes>
+    Improvements
+    #1117 Updated Japanese translation (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1117)
+    
+    Bug Fixes
+    #1132 Apply memoization to spell checking (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1132)
+    #1124 Away detection (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1124)
+    #1129 Mac App Store startup issue (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1129)
+    #1140 Preload scripts compatibility (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1140)
+    #1133 Re-enable download links (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1133)
+    #1130 Reply notifications in MacOS (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1130)
+    #1123 Update button (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1123)
+    #1115 Auto reload server (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1115)
+
+    </releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
