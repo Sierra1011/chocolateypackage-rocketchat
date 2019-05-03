@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>rocketchat</id>
-    <version>2.15.1</version>
+    <version>2.15.3</version>
     <packageSourceUrl>https://github.com/Sierra1011/chocolateyPackage/tree/master/rocketchatelectron-choco</packageSourceUrl>
     <owners>Sierra1011</owners>
     <title>Rocket.Chat</title>
@@ -27,19 +27,10 @@ With Rocket.Chat LiveChat you can add real-time chat widgets to any website or m
 Replace other systems and use one communication platform to save time and money. 
     </description>
     <releaseNotes>
-    Improvements
-    #1117 Updated Japanese translation (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1117)
-    
     Bug Fixes
-    #1132 Apply memoization to spell checking (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1132)
-    #1124 Away detection (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1124)
-    #1129 Mac App Store startup issue (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1129)
-    #1140 Preload scripts compatibility (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1140)
-    #1133 Re-enable download links (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1133)
-    #1130 Reply notifications in MacOS (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1130)
-    #1123 Update button (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1123)
-    #1115 Auto reload server (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1115)
-
+    #1196 Safely compute initials for server name on sidebars (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1196)
+    #1198 Add a module to handle deep links following the documentation (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1198)
+    
     </releaseNotes>
   </metadata>
   <files>
