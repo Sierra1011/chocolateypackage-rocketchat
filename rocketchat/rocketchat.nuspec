@@ -2,8 +2,8 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>rocketchat</id>
-    <version>2.15.3</version>
-    <packageSourceUrl>https://github.com/Sierra1011/chocolateyPackage/tree/master/rocketchatelectron-choco</packageSourceUrl>
+    <version>2.16.0</version>
+    <packageSourceUrl>https://github.com/Sierra1011/chocolateypackage-rocketchat</packageSourceUrl>
     <owners>Sierra1011</owners>
     <title>Rocket.Chat</title>
     <authors>Rocket.Chat</authors>
@@ -28,9 +28,27 @@ Replace other systems and use one communication platform to save time and money.
     </description>
     <releaseNotes>
     Bug Fixes
-    #1196 Safely compute initials for server name on sidebars (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1196)
-    #1198 Add a module to handle deep links following the documentation (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1198)
     
+    #1275 Ignore spurious did-fail load, fixes #1273 (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1275, https://github.com/RocketChat/Rocket.Chat.Electron/pull/1273)
+
+    Improvements
+
+    #1325 Add console warning to self-XSS (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1325)
+    #1312 Fixes and updates French translations (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1312)
+
+    Others
+
+    #1347 MacOS build (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1347)
+    #1343 Reenable webviews (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1343)
+    #1346 Revert Linux artifacts names (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1346)
+    #1342 Update dependencies (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1342)
+    #1344 Update tasks and metadata (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1344)
+    #1304 Bump lodash from 4.17.11 to 4.17.15 (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1304)
+    #1305 Bump js-yaml from 3.12.2 to 3.13.0 (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1305)
+    #1306 Bump eslint-utils from 1.3.1 to 1.4.2 (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1306)
+    #1307 Bump lodash.merge from 4.6.1 to 4.6.2 (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1307)
+    #1308 Bump mixin-deep from 1.3.1 to 1.3.2 (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1308)
+        
     </releaseNotes>
   </metadata>
   <files>
