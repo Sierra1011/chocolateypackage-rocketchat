@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>rocketchat</id>
-    <version>2.15.5</version>
+    <version>2.16.1</version>
     <packageSourceUrl>https://github.com/Sierra1011/chocolateypackage-rocketchat</packageSourceUrl>
     <owners>Sierra1011</owners>
     <title>Rocket.Chat</title>
