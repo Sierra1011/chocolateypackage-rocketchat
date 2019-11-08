@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>rocketchat</id>
-    <version>2.16.1</version>
+    <version>2.16.2</version>
     <packageSourceUrl>https://github.com/Sierra1011/chocolateypackage-rocketchat</packageSourceUrl>
     <owners>Sierra1011</owners>
     <title>Rocket.Chat</title>
@@ -29,8 +29,11 @@ Replace other systems and use one communication platform to save time and money.
     <releaseNotes>
     Bug Fixes
     
-    #1365 powerMonitor API usage (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1365)
-    #1366 Spellchecker setup (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1366)
+    #1381 Update dialog events (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1381)
+
+    Improvements
+
+    #1380 Notifications on Gnome (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1380)
         
     </releaseNotes>
   </metadata>
