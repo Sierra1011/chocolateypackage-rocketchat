@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>rocketchat</id>
-    <version>2.16.2</version>
+    <version>2.17.0</version>
     <packageSourceUrl>https://github.com/Sierra1011/chocolateypackage-rocketchat</packageSourceUrl>
     <owners>Sierra1011</owners>
     <title>Rocket.Chat</title>
@@ -27,13 +27,29 @@ With Rocket.Chat LiveChat you can add real-time chat widgets to any website or m
 Replace other systems and use one communication platform to save time and money. 
     </description>
     <releaseNotes>
+  
     Bug Fixes
-    
-    #1381 Update dialog events (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1381)
 
+    #1402 Embed dialogs (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1402)
+    #1410 Enable websecurity (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1410)
+    #1415 Fetch avatar images for notifications without CORS (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1415)
+    #1412 Loading error view updates (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1412)
+    #1417 Main window state handling (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1417)
+    #1409 Non context-aware native modules (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1409)
+    #1419 Preload script issues (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1419)
+    #1381 Update dialog events (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1381)
+    
     Improvements
 
+    #1418 Focus main window on second app instance event (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1418)
+    #1416 Infer content type for notification icon (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1416)
+    #1414 Lean main process (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1414)
     #1380 Notifications on Gnome (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1380)
+    #1392 Update to Electron 7 (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1392)
+
+    Others
+
+    #1401 Update TouchBar API usage (https://github.com/RocketChat/Rocket.Chat.Electron/pull/1401)
         
     </releaseNotes>
   </metadata>
