@@ -1,2 +1,2 @@
 ﻿$ErrorActionPreference = 'Stop';
-Install-ChocolateyPackage -packageName 'rocketchat' -FileType exe -SilentArgs '/S /allusers' -Url 'https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/2.17.5/rocketchat-setup-2.17.5.exe' -checksum '438DD65BD8C80C862CC683107133AD3AF7926053C7F0D4A0FD505B40DA99A800' -checksumType 'sha256'
+Install-ChocolateyPackage -packageName 'rocketchat' -FileType exe -SilentArgs '/S /allusers' -Url 'https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/2.17.6/rocketchat-setup-2.17.6.exe' -checksum 'B186D9E6F1BAD214920651E78B2E942802F08A5CC0FE277520055B91058B96BB' -checksumType 'sha256'
