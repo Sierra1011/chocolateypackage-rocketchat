@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>rocketchat</id>
-    <version>2.17.10</version>
+    <version>2.17.11</version>
     <packageSourceUrl>https://github.com/Sierra1011/chocolateypackage-rocketchat</packageSourceUrl>
     <owners>Sierra1011</owners>
     <title>Rocket.Chat</title>
@@ -30,7 +30,8 @@ Replace other systems and use one communication platform to save time and money.
   
     Bug Fixes
 
-    # Patch Electron (https://github.com/RocketChat/Rocket.Chat.Electron/commit/d53ec4096c8fd9004821b13a755c2c5e818aa9c6)
+    # No notification when the avatar icon comes from a relative URL (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1662)
+    # Remove wrong entitlements on MAS builds (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1654)
   
     </releaseNotes>
   </metadata>
