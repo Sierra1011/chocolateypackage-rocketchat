@@ -12,7 +12,7 @@
     <licenseUrl>https://github.com/RocketChat/Rocket.Chat.Electron/blob/develop/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <projectSourceUrl>https://github.com/RocketChat/Rocket.Chat.Electron</projectSourceUrl>
-    <docsUrl>https://rocket.chat/docs/</docsUrl>
+    <docsUrl>https://docs.rocket.chat/</docsUrl>
     <mailingListUrl>https://rocket.chat/contact</mailingListUrl>
     <bugTrackerUrl>https://github.com/RocketChat/Rocket.Chat.Electron/issues</bugTrackerUrl>
     <tags>rocket.chat rocketchat rocket.chat+ admin chat IM</tags>
