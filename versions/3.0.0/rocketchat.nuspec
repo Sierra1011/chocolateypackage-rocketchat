@@ -48,6 +48,7 @@ Replace other systems and use one communication platform to save time and money.
     # Verify url protocol in window.open (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1723)
 
     Features
+
     # Add Hungarian translation (https://github.com/RocketChat/Rocket.Chat.Electron/issues/554)
     # Add new locale for Ukrainian (https://github.com/RocketChat/Rocket.Chat.Electron/issues/559)
     # Add Polish translation (https://github.com/RocketChat/Rocket.Chat.Electron/issues/586)
@@ -61,6 +62,7 @@ Replace other systems and use one communication platform to save time and money.
     # Use current server's favicon as window/taskbar icon (https://github.com/RocketChat/Rocket.Chat.Electron/issues/720)
 
     Performance Improvements
+    
     # Improve away detection (https://github.com/RocketChat/Rocket.Chat.Electron/issues/542)
     # Notifications on main process (https://github.com/RocketChat/Rocket.Chat.Electron/issues/675)
   
