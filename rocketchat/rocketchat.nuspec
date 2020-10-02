@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>rocketchat</id>
-    <version>3.0.0</version>
+    <version>3.0.1</version>
     <packageSourceUrl>https://github.com/Sierra1011/chocolateypackage-rocketchat</packageSourceUrl>
     <owners>Sierra1011</owners>
     <title>Rocket.Chat</title>
@@ -30,41 +30,8 @@ Replace other systems and use one communication platform to save time and money.
   
     Bug Fixes
 
-    # No notification when the avatar icon comes from a relative URL (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1662)
-    # Add snap connection for camera (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1484)
-    # Bugs related to focused webContents (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1525)
-    # Command line args handling on packaged apps (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1522)
-    # Context isolation in preload script and openExternal handling (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1710)
-    # Display tray icon balloon when main window is hidden (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1518)
-    # Error reporting on Bugsnag (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1655)
-    # Gracefully exit the app (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1736)
-    # Media permissions (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1740)
-    # Menu bar crashing (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1722)
-    # Minimum width in split view on OS X is 600px (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1549)
-    # Missing tslib at runtime (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1721)
-    # Opening links with external protocol (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1709)
-    # Remove wrong entitlements on MAS builds (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1654)
-    # Some structural issues (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1515))
-    # Verify url protocol in window.open (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1723)
-
-    Features
-
-    # Add Hungarian translation (https://github.com/RocketChat/Rocket.Chat.Electron/issues/554)
-    # Add new locale for Ukrainian (https://github.com/RocketChat/Rocket.Chat.Electron/issues/559)
-    # Add Polish translation (https://github.com/RocketChat/Rocket.Chat.Electron/issues/586)
-    # Added option to disable GPU acceleration (https://github.com/RocketChat/Rocket.Chat.Electron/issues/541)
-    # Deep links (https://github.com/RocketChat/Rocket.Chat.Electron/issues/726)
-    # Embedded spell checking dictionaries (https://github.com/RocketChat/Rocket.Chat.Electron/issues/523)
-    # Menu bar as components (https://github.com/RocketChat/Rocket.Chat.Electron/issues/512)
-    # MSI installer (https://github.com/RocketChat/Rocket.Chat.Electron/issues/734)
-    # New "Add Server" layout (https://github.com/RocketChat/Rocket.Chat.Electron/issues/738)
-    # Select client certificate dialog (https://github.com/RocketChat/Rocket.Chat.Electron/issues/511)
-    # Use current server's favicon as window/taskbar icon (https://github.com/RocketChat/Rocket.Chat.Electron/issues/720)
-
-    Performance Improvements
-    
-    # Improve away detection (https://github.com/RocketChat/Rocket.Chat.Electron/issues/542)
-    # Notifications on main process (https://github.com/RocketChat/Rocket.Chat.Electron/issues/675)
+    # Server validation (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1756)
+    # Window state loading (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1758)
   
     </releaseNotes>
   </metadata>
