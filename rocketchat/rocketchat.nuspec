@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>rocketchat</id>
-    <version>3.0.1</version>
+    <version>3.0.2</version>
     <packageSourceUrl>https://github.com/Sierra1011/chocolateypackage-rocketchat</packageSourceUrl>
     <owners>Sierra1011</owners>
     <title>Rocket.Chat</title>
@@ -12,7 +12,6 @@
     <licenseUrl>https://github.com/RocketChat/Rocket.Chat.Electron/blob/develop/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <projectSourceUrl>https://github.com/RocketChat/Rocket.Chat.Electron</projectSourceUrl>
-    <docsUrl>https://docs.rocket.chat</docsUrl>
     <mailingListUrl>https://rocket.chat/contact</mailingListUrl>
     <bugTrackerUrl>https://github.com/RocketChat/Rocket.Chat.Electron/issues</bugTrackerUrl>
     <tags>rocket.chat rocketchat rocket.chat+ admin chat IM</tags>
@@ -30,8 +29,11 @@ Replace other systems and use one communication platform to save time and money.
   
     Bug Fixes
 
-    # Server validation (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1756)
-    # Window state loading (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1758)
+    # Add extension filters to save download dialog (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1772)
+    # Asynchronous window state changes (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1773)
+    # Increase server version range (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1770)
+    # Update pt-BR.i18n.json (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1774)
+    # Update tr-TR.i18n.json (https://github.com/RocketChat/Rocket.Chat.Electron/issues/1763)
   
     </releaseNotes>
   </metadata>
