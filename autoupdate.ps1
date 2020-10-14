@@ -1,11 +1,9 @@
 ################################################
 # Get new version
+$Package = "rocketchat"
+$VERSION = "3.0.3" 
 ################################################
-
-# Populate Version
-$VERSION = "3.0.3" # Get-Content? Scrape page?
-
-
+# Populate Version # Get-Content? Scrape page?
 $TEMPDIR = ".\versions\template\"
 $WORKDIR = ".\versions\$VERSION\"
 # Get the Hash from the download
@@ -33,5 +31,15 @@ Remove-Item $NEWDIR -Recurse -Force
 New-Item -Path $NEWDIR -ItemType Directory
 
 Foreach ( $Item in ( Get-ChildItem $WORKDIR ) ) {
-    Copy-Item $Item.Fullname -Destination $NEWDIR
+    Copy-Item $Item.Fullname -Destination $NEWDIR -Recurse -Force
 }
+
+################################################
+# Build & push to chocolatey
+################################################
+$PKGFile = "C:\Temp\"
+$Nuspec = ( Get-ChildItem $NEWDIR\*.nuspec )
+choco pack $Nuspec.Fullname --output-directory=$PKGFile 
+Rename-Item ( Get-ChildItem "$PKGFile\$Package.$VERSION.nupkg" ) "$Package.nupkg"
+choco push ( Get-ChildItem "$PKGFile\$Package.nupkg" ).Fullname -s="https://chocolatey.org/"
+Remove-Item ( Get-ChildItem "$PKGFile\$Package.nupkg" ) -Force
