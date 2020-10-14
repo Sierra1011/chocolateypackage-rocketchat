@@ -1,7 +1,7 @@
 ################################################
 # Get new version
 $Package = "rocketchat"
-$VERSION = "3.0.3" 
+$VERSION = Read-Host "What version do you want to build?" #"3.0.3" 
 ################################################
 # Populate Version # Get-Content? Scrape page?
 $TEMPDIR = ".\versions\template\"
