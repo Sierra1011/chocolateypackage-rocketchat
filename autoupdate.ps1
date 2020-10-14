@@ -1,23 +1,10 @@
+$Package = "rocketchat"
 # define latest version logic
 $Headers = @{'Accept'='application/vnd.github.v3+json'}
-$Response = ( Invoke-WebRequest "https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest" -Method GET -Headers $Headers)
-If ( $Response -eq "200") {
-    
-}
-Else {
-    Write-Error "The API call didn't work as expected!"
-    Pause
-    Exit
-}
+$Response = ( Invoke-WebRequest "https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest" -Method GET -Headers $Headers) | ConvertFrom-Json
+$Version = $Response.tag_name
+Write-Output "Building package version $Version."
 
-
-
-################################################
-# Get new version
-$Package = "rocketchat"
-$VERSION = Read-Host "What version do you want to build?" #"3.0.3" 
-################################################
-# Populate Version # Get-Content? Scrape page?
 $TEMPDIR = ".\versions\template\"
 $WORKDIR = ".\versions\$VERSION\"
 
