@@ -20,10 +20,5 @@ $Content = ( $Content -Replace '#VERSION#',$VERSION )
 $Content -Replace '#HASH#',$HASH | Out-File "$WORKDIR\tools\chocolateyinstall.ps1"
 
 
-$FileURL = "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/$($VERSION))/rocketchat-setup-$($VERSION).exe"
-
-$OutFile = "rocketchat-setup-$($VERSION).exe"
-
-Invoke-WebRequest -Uri $FileURL -OutFile $OutFile 
-
-$Hash = Get-FileHash $File -Algorithm SHA256
+$FileURL = "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/$($VERSION)/rocketchat-setup-$($VERSION).exe"
+$Hash = ( Invoke-WebRequest $FileURL | Get-FileHash $File -Algorithm SHA256 ).Hash
