@@ -27,18 +27,6 @@ If ( !( Test-Path "$WORKDIR\*.nuspec"  ) ) {
     $Content -Replace '#HASH#',$HASH | Out-File "$WORKDIR\tools\chocolateyinstall.ps1"
 }
 
-#################################################
-## Copy to Rocketchat folder
-#################################################
-#$NEWDIR = ".\rocketchat" 
-#Remove-Item $NEWDIR -Recurse -Force 
-#New-Item -Path $NEWDIR -ItemType Directory
-#
-#Foreach ( $Item in ( Get-ChildItem $WORKDIR ) ) {
-#    Copy-Item $Item.Fullname -Destination $NEWDIR -Recurse -Force
-#}
-#
-
 # Add to git and push
 CD $WORKDIR 
 git add .
@@ -46,7 +34,6 @@ CD ..\
 CD ..\
 git commit -m "Updated to version $VERSION"
 git push
-
 
 ################################################
 # Build & push to chocolatey
