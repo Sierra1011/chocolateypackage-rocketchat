@@ -29,9 +29,9 @@ If ( !( Test-Path "$WORKDIR\*.nuspec"  ) ) {
 }
 
 # Add to git and push
-Set-Location $WORKDIR 
-git add .
-Set-Location ..\..\
+#Set-Location $WORKDIR 
+git add $WORKDIR\.
+#Set-Location ..\..\
 git commit -m "Updated to version $VERSION"
 git push
 
