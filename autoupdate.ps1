@@ -1,3 +1,4 @@
+Set-Location C:\git\github\chocolateypackage-rocketchat
 $Package = "rocketchat"
 # define latest version logic
 $Headers = @{'Accept'='application/vnd.github.v3+json'}
@@ -28,10 +29,9 @@ If ( !( Test-Path "$WORKDIR\*.nuspec"  ) ) {
 }
 
 # Add to git and push
-CD $WORKDIR 
+Set-Location $WORKDIR 
 git add .
-CD ..\
-CD ..\
+Set-Location ..\..\
 git commit -m "Updated to version $VERSION"
 git push
 
