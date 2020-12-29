@@ -1,6 +1,8 @@
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $InvokePath = Split-Path ( $MyInvocation.MyCommand.Path ) -Parent
 Set-Location $InvokePath
 $Package = "rocketchat"
+
 # Read latest version
 $Version = Read-Host("What version do you want to build?")
 Write-Output "Building package version $Version."
