@@ -1,6 +1,8 @@
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $InvokePath = Split-Path ( $MyInvocation.MyCommand.Path ) -Parent
 Set-Location $InvokePath
 $Package = "rocketchat"
+
 # define latest version logic
 $Headers = @{'Accept'='application/vnd.github.v3+json'}
 $Response = ( Invoke-WebRequest "https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest" -Method GET -Headers $Headers) | ConvertFrom-Json
