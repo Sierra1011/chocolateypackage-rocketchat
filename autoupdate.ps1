@@ -1,4 +1,5 @@
-Set-Location C:\git\github\chocolateypackage-rocketchat
+$InvokePath = Split-Path ( $MyInvocation.MyCommand.Path ) -Parent
+Set-Location $InvokePath
 $Package = "rocketchat"
 # define latest version logic
 $Headers = @{'Accept'='application/vnd.github.v3+json'}
