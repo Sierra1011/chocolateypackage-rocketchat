@@ -1,21 +1,19 @@
 $InvokePath = Split-Path ( $MyInvocation.MyCommand.Path ) -Parent
 Set-Location $InvokePath
 $Package = "rocketchat"
-# define latest version logic
-$Headers = @{'Accept'='application/vnd.github.v3+json'}
-$Response = ( Invoke-WebRequest "https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest" -Method GET -Headers $Headers) | ConvertFrom-Json
-$Version = $Response.tag_name
+# Read latest version
+$Version = Read-Host("What version do you want to build?")
 Write-Output "Building package version $Version."
 
-$TEMPDIR = ".\versions\template\"
-$WORKDIR = ".\versions\$VERSION\"
+$TEMPDIR = "$InvokePath\versions\template\"
+$WORKDIR = "$InvokePath\versions\$VERSION\"
 
 If ( !( Test-Path "$WORKDIR\*.nuspec"  ) ) {
     # Get the Hash from the download
     $File = "C:\Temp\rocketchat-setup-$VERSION.exe"
     $FileURL = "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/$($VERSION)/rocketchat-setup-$($VERSION).exe"
     try {
-        ( New-Object System.Net.WebClient ).DownloadFile($FileURL,$File)
+        ( New-Object System.Net.WebClient ).DownloadFile($FileURL,$File)    
     }
     catch {
         Write-Error "Download for version $VERSION failed."
@@ -33,12 +31,13 @@ If ( !( Test-Path "$WORKDIR\*.nuspec"  ) ) {
     $Content = Get-ChildItem -Path "$TEMPDIR\tools\chocolateyinstall.ps1" | Get-Content -Raw
     $Content = ( $Content -Replace '#VERSION#',$VERSION )
     $Content -Replace '#HASH#',$HASH | Out-File "$WORKDIR\tools\chocolateyinstall.ps1"
-
+    
     # Add to git and push
     git add $WORKDIR\.
     git commit -m "Updated to version $VERSION"
     git push
 }
+
 
 ################################################
 # Build & push to chocolatey
