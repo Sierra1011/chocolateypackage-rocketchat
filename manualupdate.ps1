@@ -7,8 +7,8 @@ $Package = "rocketchat"
 $Version = Read-Host("What version do you want to build?")
 Write-Output "Building package version $Version."
 
-$TEMPDIR = "$InvokePath\versions\template\"
-$WORKDIR = "$InvokePath\versions\$VERSION\"
+$TEMPDIR = ".\versions\template\"
+$WORKDIR = ".\versions\$VERSION\"
 
 If ( !( Test-Path "$WORKDIR\*.nuspec"  ) ) {
     # Get the Hash from the download
