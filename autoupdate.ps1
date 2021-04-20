@@ -11,10 +11,11 @@ Write-Output "Building package version $Version."
 
 $TEMPDIR = ".\versions\template\"
 $WORKDIR = ".\versions\$VERSION\"
+$TempPath = Split-Path ( $MyInvocation.MyCommand.Path ) -Parent
 
 If ( !( Test-Path "$WORKDIR\*.nuspec"  ) ) {
     # Get the Hash from the download
-    $File = "C:\Temp\rocketchat-setup-$VERSION.exe"
+    $File = "$TempPath\rocketchat-setup-$VERSION.exe"
     $FileURL = "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/$($VERSION)/rocketchat-setup-$($VERSION).exe"
     try {
         ( New-Object System.Net.WebClient ).DownloadFile($FileURL,$File)
@@ -45,9 +46,8 @@ If ( !( Test-Path "$WORKDIR\*.nuspec"  ) ) {
 ################################################
 # Build & push to chocolatey
 ################################################
-$PKGFile = "C:\Temp\"
 $Nuspec = ( Get-ChildItem $WORKDIR\*.nuspec )
-choco pack $Nuspec.Fullname --output-directory=$PKGFile 
-Rename-Item ( Get-ChildItem "$PKGFile\$Package.$VERSION.nupkg" ) "$Package.nupkg"
-choco push ( Get-ChildItem "$PKGFile\$Package.nupkg" ).Fullname -s="https://chocolatey.org/"
-Remove-Item ( Get-ChildItem "$PKGFile\$Package.nupkg" ) -Force
+choco pack $Nuspec.Fullname --output-directory=$TempPath 
+Rename-Item ( Get-ChildItem "$TempPath\$Package.$VERSION.nupkg" ) "$Package.nupkg"
+choco push ( Get-ChildItem "$TempPath\$Package.nupkg" ).Fullname -s="https://chocolatey.org/"
+Remove-Item ( Get-ChildItem "$TempPath\$Package.nupkg" ) -Force
