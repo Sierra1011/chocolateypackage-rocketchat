@@ -1,0 +1,11 @@
+name: 'Latest version'
+description: 'Get the current latest version'
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-id }}
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/getversion.ps1
+      shell: pwsh
