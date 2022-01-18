@@ -7,6 +7,12 @@ on: [push,workflow_dispatch]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  version:
+    runs-on: windows-latest
+    name: Get the latest version
+    steps:
+      - uses: actions/checkout@v2
+      
   build:
     runs-on: windows-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
