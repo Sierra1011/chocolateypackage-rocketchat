@@ -5,7 +5,7 @@ $Package = "rocketchat"
 
 # define latest version logic
 $Headers = @{'Accept'='application/vnd.github.v3+json'}
-$Response = ( Invoke-WebRequest "https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest" -Method GET -Headers $Headers) | ConvertFrom-Json
+$Response = ( Invoke-WebRequest "https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest" -Method GET -Headers $Headers -UseBasicParsing) | ConvertFrom-Json
 $Version = $Response.tag_name
 Write-Output "Building package version $Version."
 
