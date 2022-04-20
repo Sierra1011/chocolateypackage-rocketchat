@@ -4,10 +4,12 @@ Set-Location $InvokePath
 $Package = "rocketchat"
 
 # define latest version logic
-$Headers = @{'Accept'='application/vnd.github.v3+json'}
-$Response = ( Invoke-WebRequest "https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest" -Method GET -Headers $Headers -UseBasicParsing) | ConvertFrom-Json
-$Version = $Response.tag_name
-Write-Output "Building package version $Version."
+If ( !($Version) ) {
+    $Headers = @{'Accept'='application/vnd.github.v3+json'}
+    $Response = ( Invoke-WebRequest "https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest" -Method GET -Headers $Headers -UseBasicParsing) | ConvertFrom-Json
+    $Version = $Response.tag_name
+    Write-Output "Building package version $Version."
+}
 
 $TEMPDIR = ".\versions\template\"
 $WORKDIR = ".\versions\$VERSION\"
@@ -15,8 +17,8 @@ $TempPath = Split-Path ( $MyInvocation.MyCommand.Path ) -Parent
 
 If ( !( Test-Path "$WORKDIR\*.nuspec"  ) ) {
     # Get the Hash from the download
-    $File = "$TempPath\rocketchat-setup-$VERSION.exe"
-    $FileURL = "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/$($VERSION)/rocketchat-setup-$($VERSION).exe"
+    $File = "$TempPath\rocketchat-$VERSION-win-x64.exe"
+    $FileURL = "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/$VERSION/rocketchat-$VERSION-win-x64.exe"
     try {
         ( New-Object System.Net.WebClient ).DownloadFile($FileURL,$File)
     }
