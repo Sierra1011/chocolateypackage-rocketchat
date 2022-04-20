@@ -1,3 +1,7 @@
+param(
+[string]$Version
+)
+
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $InvokePath = Split-Path ( $MyInvocation.MyCommand.Path ) -Parent
 Set-Location $InvokePath
