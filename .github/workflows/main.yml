@@ -11,9 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-      name: Build
+
+    - name: Build
       run: |
         chmod +x build.sh
-        $GITHUB_WORKSPACE//build.sh -v
+        $GITHUB_WORKSPACE/build.sh -v
       env:
          API_KEY: ${{ secrets.API_KEY }}
