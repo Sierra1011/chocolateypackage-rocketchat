@@ -1,0 +1,12 @@
+name: 'Version'
+description: 'Gets latest version'
+outputs:
+  version:
+    description: "package version"
+    value: ${{ steps.random-number-generator.outputs.random-id }}
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/version.sh
+      id: version
+      shell: bash

@@ -1,5 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-name: Build on Windows
+name: build
 
 # Controls when the workflow will run
 on: [push,workflow_dispatch]
@@ -7,25 +7,27 @@ on: [push,workflow_dispatch]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  version:
-    runs-on: windows-latest
-    name: Get the latest version
-    steps:
-      - uses: actions/checkout@v2
-      
   build:
     runs-on: windows-latest
+    name: Build the latest version
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Get current version
+        id: get_version
+        run: echo ::set-output name=version::$(curl -H 'Accept'='application/vnd.github.v3+json' -L "https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest" | jq -r .tag_name) >> $GITHUB_ENV
+        shell: bash
+      
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo Hello, world!
+        run: echo ${{ steps.get_version.outputs.version }}
+        shell: bash
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      #- name: Run a multi-line script
+      #  shell: pwsh
+      #  run: |
+          
+
