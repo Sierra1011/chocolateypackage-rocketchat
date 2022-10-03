@@ -11,7 +11,7 @@ jobs:
   build_choco:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         repository: chocolatey/choco/
         ref: stable
