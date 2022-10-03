@@ -1,5 +1,6 @@
 param(
-[string]$Version
+[string]$Version,
+[string]$CHOCO_TOKEN
 )
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -42,18 +43,17 @@ If ( !( Test-Path "$WORKDIR\*.nuspec"  ) ) {
     $Content = Get-ChildItem -Path "$TEMPDIR\tools\chocolateyinstall.ps1" | Get-Content -Raw
     $Content = ( $Content -Replace '#VERSION#',$VERSION )
     $Content -Replace '#HASH#',$HASH | Out-File "$WORKDIR\tools\chocolateyinstall.ps1"
-
-    # Add to git and push
-    git add $WORKDIR\.
-    git commit -m "Updated to version $VERSION"
-    git push
 }
 
 ################################################
 # Build & push to chocolatey
 ################################################
+choco apikey -k $CHOCO_TOKEN -s https://chocolatey.org
+choco apikey -k $CHOCO_TOKEN -s https://push.chocolatey.org
+
 $Nuspec = ( Get-ChildItem $WORKDIR\*.nuspec )
 choco pack $Nuspec.Fullname --output-directory=$TempPath 
+
 Rename-Item ( Get-ChildItem "$TempPath\$Package.$VERSION.nupkg" ) "$Package.nupkg"
 choco push ( Get-ChildItem "$TempPath\$Package.nupkg" ).Fullname -s="https://chocolatey.org/"
-Remove-Item ( Get-ChildItem "$TempPath\$Package.nupkg" ) -Force
+exit 0
