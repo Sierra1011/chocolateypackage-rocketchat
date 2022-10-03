@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        repository: https://github.com/chocolatey/choco/
+        repository: chocolatey/choco/
         ref: stable
 
     - name: Build with mono
