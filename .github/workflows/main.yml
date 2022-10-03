@@ -8,17 +8,41 @@ on: [push,workflow_dispatch]
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   
-  build_choco:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-      with:
-        repository: chocolatey/choco
-        ref: stable
+  install:
 
-    - name: Build with mono
-      run: |
-        chmod +x build.sh
-        $GITHUB_WORKSPACE/build.sh -v
-      env:
-         API_KEY: ${{ secrets.API_KEY }}
+    runs-on: windows-latest
+
+    steps:
+
+      - name: Install via command line
+
+        run: choco install gh
+
+  
+  #build_choco:
+  #  name: Build Chocolatey locally
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #  - uses: actions/checkout@v3
+  #    with:
+  #      repository: chocolatey/choco
+  #      ref: stable
+  #
+  #  - name: Build with mono
+  #    run: |
+  #      chmod +x build.sh
+  #      $GITHUB_WORKSPACE/build.sh -v
+  #    env:
+  #       API_KEY: ${{ secrets.API_KEY }}
+  #
+  #choco_pack:
+  #  name: Choco packaging
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #  - uses: actions/checkout@v3
+  #
+  #  - name: Build 
+  #    run: 
+  #    env:
+  #       API_KEY: ${{ secrets.API_KEY }}
+  
