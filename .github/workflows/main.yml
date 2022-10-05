@@ -13,11 +13,11 @@ jobs:
     runs-on: windows-latest
     
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v3
+    #- name: Checkout repo
+    #  uses: actions/checkout@v3
 
-    - name: Run update script
-      run: $GITHUB_WORKSPACE\\autoupdate.ps1 -CHOCO_TOKEN ${{ secrets.CHOCO_TOKEN }}
+    #- name: Run update script
+    #  run: $GITHUB_WORKSPACE\\autoupdate.ps1 -CHOCO_TOKEN ${{ secrets.CHOCO_TOKEN }}
 
   
   #build_choco:
@@ -46,4 +46,7 @@ jobs:
   #    run: 
   #    env:
   #       API_KEY: ${{ secrets.API_KEY }}
-  
+    - name: Choco help
+      uses: crazy-max/ghaction-chocolatey@v2
+      with:
+        args: -h
