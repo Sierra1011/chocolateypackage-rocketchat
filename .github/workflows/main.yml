@@ -20,13 +20,24 @@ jobs:
       run: |
         VER=$(curl https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest | jq '.["tag_name"]' | tr -d \")
         echo "version=$VER" >> $GITHUB_ENV
-        URL=$(curl https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest | jq '.["browser_download_url"]' | tr -d \")
-        echo "download=$URL" >> $GITHUB_ENV
-
-    - name: Echo version
+    - name: Get file hash
       run: |
-        echo ${{ env.version }}
-        echo ${{ env.download }}
+        VERSION=${{ env.version }}
+        wget https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${{ env.version }}/rocketchat-${{ env.version }}-win-x64.exe
+        HASH=$(sha256sum rocketchat-${{ env.version }}-win-x64.exe | awk "{print \$1}")
+        echo "hash=$HASH" >> $GITHUB_ENV
+
+    - name: Echo hash
+      run: |
+        echo ${{ env.hash }}
+
+    #- name: Echo version
+    #  run: |
+    #    echo ${{ env.version }}
+    #
+    #- name: Echo version
+    #  run: |
+    #    echo ${{ env.version }}
 
 
 
