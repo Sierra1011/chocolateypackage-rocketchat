@@ -17,8 +17,9 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Get latest version
-      run: curl "https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest" | jq '.["tag_name"]'
-
+      run: |
+        $json = ( curl "https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest" | ConvertFrom-JSON ) 
+        Write-Output $json.tag_name
 
 
 
