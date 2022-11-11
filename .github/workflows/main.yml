@@ -25,8 +25,8 @@ jobs:
 
     - name: Echo version
       run: |
-        echo {{ env.version }}
-        echo {{ env.download }}
+        echo ${{ env.version }}
+        echo ${{ env.download }}
 
 
 
