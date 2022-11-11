@@ -84,8 +84,13 @@ jobs:
     - name: Choco package
       run: pack rocketchat.nuspec
     
-    - name: List
-      run: ls
+    - name: Rename file
+      run: mv rocketchat.${{ env.version }}.nupkg rocketchat.nupkg
+
+    - name: Push to Chocolatey
+      uses: crazy-max/ghaction-chocolatey@v2
+      with:
+        args: push rocketchat.nupkg
 
 
   #build_choco:
