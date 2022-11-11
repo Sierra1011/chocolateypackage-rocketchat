@@ -83,10 +83,10 @@ jobs:
       with:
         args: apikey -k ${{ secrets.CHOCO_TOKEN }} -s https://chocolatey.org
 
-    - name: Choco add API key
+    - name: Choco Package 
       uses: crazy-max/ghaction-chocolatey@v2
       with:
-        args: pack rocketchat.nuspec
+        args: pack rocketchat.nuspec --allow-unofficial
     
     - name: Rename file
       run: mv rocketchat.${{ env.version }}.nupkg rocketchat.nupkg
