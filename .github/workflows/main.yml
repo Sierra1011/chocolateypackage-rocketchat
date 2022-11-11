@@ -35,7 +35,7 @@ jobs:
 
     - name: Make nuspec
       run: |
-        cat <<EOF
+        echo <<EOF
         <?xml version="1.0" encoding="utf-8"?>
         <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
           <metadata>
@@ -75,15 +75,17 @@ jobs:
         </package>
         EOF > rocketchat.nuspec
 
-    - name: Echo version
-      run: |
-        cat rocketchat.nuspec
 
-    #- name: Choco help
-    #  uses: crazy-max/ghaction-chocolatey@v2
-    #  with:
-    #    args: -h
+    - name: Choco add API key
+      uses: crazy-max/ghaction-chocolatey@v2
+      with:
+        args: apikey -k ${{ secrets.CHOCO_TOKEN }} -s https://chocolatey.org
 
+    - name: Choco package
+      run: pack rocketchat.nuspec
+    
+    - name: List
+      run: ls
 
 
   #build_choco:
