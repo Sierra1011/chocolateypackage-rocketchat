@@ -27,9 +27,13 @@ jobs:
         HASH=$(sha256sum rocketchat-${{ env.version }}-win-x64.exe | awk "{print \$1}")
         echo "hash=$HASH" >> $GITHUB_ENV
 
-    - name: Echo hash
+    - name: Make install script
       run: |
-        ls
+        mkdir tools
+        touch tools/chocolateyinstall.ps1
+        echo "$ErrorActionPreference = 'Stop';" > tools/chocolateyinstall.ps1
+        echo "Install-ChocolateyPackage -packageName 'rocketchat' -FileType exe -SilentArgs '/S /allusers' -Url 'https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${{ env.version }}/rocketchat-${{ env.version }}-win-x64.exe' -checksum '${{ env.hash }}' -checksumType 'sha256'" > tools/chocolateyinstall.ps1
+        cat tools/chocolateyinstall.ps1
 
     - name: Echo version
       run: |
