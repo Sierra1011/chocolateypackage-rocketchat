@@ -35,7 +35,7 @@ jobs:
 
     - name: Make nuspec
       run: |
-        echo <<EOF
+        echo <<EOF > rocketchat.nuspec
         <?xml version="1.0" encoding="utf-8"?>
         <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
           <metadata>
@@ -73,7 +73,7 @@ jobs:
             <file src="tools\**" target="tools" />
           </files>
         </package>
-        EOF > rocketchat.nuspec
+        EOF 
 
     - name: Cat nuspec
       run: cat rocketchat.nuspec
