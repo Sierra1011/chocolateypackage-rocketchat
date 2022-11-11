@@ -13,13 +13,16 @@ jobs:
     runs-on: windows-latest
     
     steps:
-    #- name: Checkout repo
-    #  uses: actions/checkout@v3
+    - name: Checkout repo
+      uses: actions/checkout@v3
 
-    #- name: Run update script
-    #  run: $GITHUB_WORKSPACE\\autoupdate.ps1 -CHOCO_TOKEN ${{ secrets.CHOCO_TOKEN }}
+    - name: Get latest version
+      run: curl "https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest" | jq '.["tag_name"]'
 
-  
+
+
+
+
   #build_choco:
   #  name: Build Chocolatey locally
   #  runs-on: ubuntu-latest
