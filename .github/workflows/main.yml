@@ -29,15 +29,15 @@ jobs:
 
     - name: Echo hash
       run: |
-        echo ${{ env.hash }}
+        ls
 
-    #- name: Echo version
-    #  run: |
-    #    echo ${{ env.version }}
-    #
-    #- name: Echo version
-    #  run: |
-    #    echo ${{ env.version }}
+    - name: Echo version
+      run: |
+        echo ${{ env.version }}
+
+    - name: Echo version
+      run: |
+        echo ${{ env.version }}
 
 
 
