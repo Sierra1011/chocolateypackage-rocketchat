@@ -23,6 +23,10 @@ jobs:
         URL=$(curl https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest | jq '.["browser_download_url"]' | tr -d \")
         echo "download=$URL" >> $GITHUB_ENV
 
+    - name: Echo version
+      run: |
+        echo {{ env.version }}
+        echo {{ env.download }}
 
 
 
