@@ -75,14 +75,18 @@ jobs:
         </package>
         EOF > rocketchat.nuspec
 
+    - name: Cat nuspec
+      run: cat rocketchat.nuspec
 
     - name: Choco add API key
       uses: crazy-max/ghaction-chocolatey@v2
       with:
         args: apikey -k ${{ secrets.CHOCO_TOKEN }} -s https://chocolatey.org
 
-    - name: Choco package
-      run: pack rocketchat.nuspec
+    - name: Choco add API key
+      uses: crazy-max/ghaction-chocolatey@v2
+      with:
+        args: pack rocketchat.nuspec
     
     - name: Rename file
       run: mv rocketchat.${{ env.version }}.nupkg rocketchat.nupkg
