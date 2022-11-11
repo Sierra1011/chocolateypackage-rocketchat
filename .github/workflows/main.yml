@@ -10,7 +10,7 @@ jobs:
   
   install:
     name: Chocolatey Package
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     
     steps:
     - name: Checkout repo
@@ -18,8 +18,12 @@ jobs:
 
     - name: Get latest version
       run: |
-        $json = ( curl "https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest" | ConvertFrom-JSON ) 
-        Write-Output $json.tag_name
+        VER=$(curl https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest | jq '.["tag_name"]' | tr -d \")
+        echo "version=$VER" >> $GITHUB_ENV
+        URL=$(curl https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest | jq '.["browser_download_url"]' | tr -d \")
+        echo "download=$URL" >> $GITHUB_ENV
+
+
 
 
 
