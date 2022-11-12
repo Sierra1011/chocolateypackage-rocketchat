@@ -72,7 +72,7 @@ jobs:
             <file src="tools\**" target="tools" />
           </files>
         </package>
-        EOF 
+        EOF
     
     - name: Remove EXE
       run: rm rocketchat*.exe
