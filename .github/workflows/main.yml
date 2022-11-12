@@ -29,7 +29,7 @@ jobs:
     - name: Make install script
       run: |
         cat <<EOF > tools/chocolateyinstall.ps1
-        $ErrorActionPreference = 'Stop';
+        \$ErrorActionPreference = 'Stop';
         Install-ChocolateyPackage -packageName 'rocketchat' -FileType exe -SilentArgs '/S /allusers' -Url 'https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${{ env.version }}/rocketchat-${{ env.version }}-win-x64.exe' -checksum '${{ env.hash }}' -checksumType 'sha256'
         EOF
     - name: Make nuspec
