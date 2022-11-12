@@ -98,3 +98,8 @@ jobs:
       run: gh pr create -B main -H update-${{ env.version }} --title "Update to version ${{ env.version }}" --body 'Created by Github Actions'
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Echo success
+      if: steps.meta.outputs.files_changed = 0
+      run: echo "Version is current"
+    
