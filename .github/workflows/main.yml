@@ -105,7 +105,7 @@ jobs:
     - name: Choco Package 
       uses: crazy-max/ghaction-chocolatey@v2
       with:
-        args: pack C:\Users\runneradmin\Downloads\latest\rocketchat.nuspec --output-directory C:\Users\runneradmin\Downloads\
+        args: pack C:\Users\runneradmin\Downloads\rocketchat.nuspec --output-directory C:\Users\runneradmin\Downloads\
     
     - name: Rename file
       run: mv rocketchat.${{ env.version }}.nupkg rocketchat.nupkg
