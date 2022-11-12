@@ -23,7 +23,7 @@ jobs:
     - name: Get file hash
       run: |
         VERSION=${{ env.version }}
-        wget https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${{ env.version }}/rocketchat-${{ env.version }}-win-x64.exe
+        wget --no-verbose https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${{ env.version }}/rocketchat-${{ env.version }}-win-x64.exe
         HASH=$(sha256sum rocketchat-${{ env.version }}-win-x64.exe | awk "{print \$1}")
         echo "hash=$HASH" >> $GITHUB_ENV
     - name: Make install script
