@@ -75,21 +75,27 @@ jobs:
         </package>
         EOF 
     
-    - name: Upload latest
-      uses: actions/upload-artifact@v3
+    - name: Commit and push changes
+      uses: devops-infra/action-commit-push@v0.9.2
       with:
-        name: latest
-        path: latest/
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        commit_message: Updated to version ${{ env.version }}
+
+    #- name: Upload latest
+    #  uses: actions/upload-artifact@v3
+    #  with:
+    #    name: latest
+    #    path: latest/
 
   build:
     name: Chocolatey Build
     #needs: ["create_latest"]
     runs-on: windows-latest
     steps:
-    #- uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
-    #- name: Display structure of downloaded files
-    #  run: ls -R
+    - name: Display structure of downloaded files
+      run: ls -R
     
     - name: Choco Upgrade
       uses: crazy-max/ghaction-chocolatey@v2.1.0
@@ -109,10 +115,10 @@ jobs:
         path: D:\a\chocolateypackage-rocketchat\chocolateypackage-rocketchat
     
     - name: Choco Package 
-      run: C:\ProgramData\Chocolatey\bin\choco.exe pack
-      #uses: crazy-max/ghaction-chocolatey@v2.1.0
-      #with:
-      #  args: pack 
+      uses: crazy-max/ghaction-chocolatey@v2.1.0
+      with:
+        args: pack 
+      #run: C:\ProgramData\Chocolatey\bin\choco.exe pack
       #  #C:\Users\runneradmin\Downloads\rocketchat.nuspec --output-directory C:\Users\runneradmin\Downloads\
 
     - name: Rename file
