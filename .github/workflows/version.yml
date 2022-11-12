@@ -80,8 +80,19 @@ jobs:
     - name: Remove EXE
       run: rm rocketchat*.exe
 
+    - uses: peterjgrainger/action-create-branch@v2.2.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        branch: update-${{ env.version }}
+
     - name: Commit and push changes
       uses: devops-infra/action-commit-push@v0.9.2
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         commit_message: Updated to version ${{ env.version }}
+
+    - name: Create PR
+      run: gh pr create -B main -H update-${{ env.version }} --title "Update to version ${{ env.version }}" --body 'Created by Github Actions'
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
