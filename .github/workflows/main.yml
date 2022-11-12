@@ -8,8 +8,8 @@ on: [push,workflow_dispatch]
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   
-  install:
-    name: Chocolatey Package
+  create_latest:
+    name: Create latest files
     runs-on: ubuntu-latest
     
     steps:
@@ -29,13 +29,13 @@ jobs:
 
     - name: Make install script
       run: |
-        mkdir tools
-        echo "$ErrorActionPreference = 'Stop';" > tools/chocolateyinstall.ps1
+        mkdir latest/tools
+        echo "$ErrorActionPreference = 'Stop';" > latest/tools/chocolateyinstall.ps1
         echo "Install-ChocolateyPackage -packageName 'rocketchat' -FileType exe -SilentArgs '/S /allusers' -Url 'https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${{ env.version }}/rocketchat-${{ env.version }}-win-x64.exe' -checksum '${{ env.hash }}' -checksumType 'sha256'" >> tools/chocolateyinstall.ps1
 
     - name: Make nuspec
       run: |
-        echo <<EOF > rocketchat.nuspec
+        echo <<EOF > latest/rocketchat.nuspec
         <?xml version="1.0" encoding="utf-8"?>
         <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
           <metadata>
@@ -74,53 +74,39 @@ jobs:
           </files>
         </package>
         EOF 
+    - name: Upload latest
+      uses: actions/upload-artifact@v3
+      with:
+        name: latest
+        path: latest/
 
-    - name: Cat nuspec
-      run: cat rocketchat.nuspec
+  build:
+    name: Chocolatey Build
+    needs: ["create_latest"]
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Download latest files
+      uses: actions/download-artifact@v3
+      with:
+        name: latest
+      
+    - name: Choco Package 
+      uses: crazy-max/ghaction-chocolatey@v2
+      with:
+        args: pack latest/rocketchat.nuspec
+    
+    - name: Rename file
+      run: mv rocketchat.${{ env.version }}.nupkg rocketchat.nupkg
 
     - name: Choco add API key
       uses: crazy-max/ghaction-chocolatey@v2
       with:
         args: apikey -k ${{ secrets.CHOCO_TOKEN }} -s https://chocolatey.org
 
-    - name: Choco Package 
-      uses: crazy-max/ghaction-chocolatey@v2
-      with:
-        args: pack rocketchat.nuspec --allow-unofficial
-    
-    - name: Rename file
-      run: mv rocketchat.${{ env.version }}.nupkg rocketchat.nupkg
-
     - name: Push to Chocolatey
       uses: crazy-max/ghaction-chocolatey@v2
       with:
         args: push rocketchat.nupkg
-
-
-  #build_choco:
-  #  name: Build Chocolatey locally
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #  - uses: actions/checkout@v3
-  #    with:
-  #      repository: chocolatey/choco
-  #      ref: stable
-  #
-  #  - name: Build with mono
-  #    run: |
-  #      chmod +x build.sh
-  #      $GITHUB_WORKSPACE/build.sh -v
-  #    env:
-  #       API_KEY: ${{ secrets.API_KEY }}
-  #
-  #choco_pack:
-  #  name: Choco packaging
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #  - uses: actions/checkout@v3
-  #
-  #  - name: Build 
-  #    run: 
-  #    env:
-  #       API_KEY: ${{ secrets.API_KEY }}
 
