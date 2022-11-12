@@ -87,12 +87,14 @@ jobs:
         branch: update-${{ env.version }}
 
     - name: Commit and push changes
+      id: push
       uses: devops-infra/action-commit-push@v0.9.2
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         commit_message: Updated to version ${{ env.version }}
 
     - name: Create PR
+      if: steps.meta.outputs.files_changed > 0
       run: gh pr create -B main -H update-${{ env.version }} --title "Update to version ${{ env.version }}" --body 'Created by Github Actions'
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
