@@ -35,4 +35,3 @@ Replace other systems and use one communication platform to save time and money.
     <file src="tools\**" target="tools" />
   </files>
 </package>
-EOF 
