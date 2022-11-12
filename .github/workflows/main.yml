@@ -86,6 +86,9 @@ jobs:
     name: Chocolatey Build
     needs: ["create_latest"]
     runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: ~/Downloads/
     steps:
     - uses: actions/checkout@v3
     
@@ -93,11 +96,16 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: latest
+        path: ~/Downloads/
       
     - name: Choco Package 
       uses: crazy-max/ghaction-chocolatey@v2
       with:
-        args: pack latest/rocketchat.nuspec
+        args: pack ~/Downloads/latest/rocketchat.nuspec
+
+    - name: Display structure of downloaded files
+      run: ls -R
+      working-directory: ~/Downloads/
     
     - name: Rename file
       run: mv rocketchat.${{ env.version }}.nupkg rocketchat.nupkg
