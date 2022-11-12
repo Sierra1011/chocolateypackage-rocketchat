@@ -103,7 +103,7 @@ jobs:
       run: ChildItem C:\ProgramData\chocolatey\lib\*\*.nu* | where Length -eq 0 | Del
       
     - name: Choco Package 
-      uses: crazy-max/ghaction-chocolatey@v2
+      uses: crazy-max/ghaction-chocolatey@v1.7.0
       with:
         args: pack C:\Users\runneradmin\Downloads\rocketchat.nuspec --output-directory C:\Users\runneradmin\Downloads\
     
@@ -111,12 +111,12 @@ jobs:
       run: mv C:\Users\runneradmin\Downloads\rocketchat.${{ env.version }}.nupkg C:\Users\runneradmin\Downloads\rocketchat.nupkg
 
     - name: Choco add API key
-      uses: crazy-max/ghaction-chocolatey@v2
+      uses: crazy-max/ghaction-chocolatey@v1.7.0
       with:
         args: apikey -k ${{ secrets.CHOCO_TOKEN }} --source https://push.chocolatey.org/
 
     - name: Push to Chocolatey
-      uses: crazy-max/ghaction-chocolatey@v2
+      uses: crazy-max/ghaction-chocolatey@v1.7.0
       with:
         args: push C:\Users\runneradmin\Downloads\rocketchat.nupkg
 
