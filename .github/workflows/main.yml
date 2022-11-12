@@ -29,13 +29,13 @@ jobs:
     - name: Make install script
       run: |
         mkdir -p latest/tools/
-        echo <<EOF > latest/tools/chocolateyinstall.ps1
+        cat <<EOF > latest/tools/chocolateyinstall.ps1
         "$ErrorActionPreference = 'Stop';" 
         "Install-ChocolateyPackage -packageName 'rocketchat' -FileType exe -SilentArgs '/S /allusers' -Url 'https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${{ env.version }}/rocketchat-${{ env.version }}-win-x64.exe' -checksum '${{ env.hash }}' -checksumType 'sha256'" 
         EOF
     - name: Make nuspec
       run: |
-        echo <<EOF > latest/rocketchat.nuspec
+        cat <<EOF > latest/rocketchat.nuspec
         <?xml version="1.0" encoding="utf-8"?>
         <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
           <metadata>
