@@ -31,7 +31,7 @@ jobs:
       run: |
         mkdir -p latest/tools/
         echo "$ErrorActionPreference = 'Stop';" > latest/tools/chocolateyinstall.ps1
-        echo "Install-ChocolateyPackage -packageName 'rocketchat' -FileType exe -SilentArgs '/S /allusers' -Url 'https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${{ env.version }}/rocketchat-${{ env.version }}-win-x64.exe' -checksum '${{ env.hash }}' -checksumType 'sha256'" >> tools/chocolateyinstall.ps1
+        echo "Install-ChocolateyPackage -packageName 'rocketchat' -FileType exe -SilentArgs '/S /allusers' -Url 'https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${{ env.version }}/rocketchat-${{ env.version }}-win-x64.exe' -checksum '${{ env.hash }}' -checksumType 'sha256'" >> latest/tools/chocolateyinstall.ps1
 
     - name: Make nuspec
       run: |
