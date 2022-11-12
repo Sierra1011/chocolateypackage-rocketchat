@@ -101,8 +101,8 @@ jobs:
     
     - name: Get content for sanity purposes
       run: |
-        cat latest/tools/chocolateyinstall.ps1
-        cat latest/rocketchat.nuspec    
+        cat tools/chocolateyinstall.ps1
+        cat rocketchat.nuspec    
 
     #- name: Choco Upgrade
     #  uses: crazy-max/ghaction-chocolatey@v2.1.0
