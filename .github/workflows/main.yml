@@ -85,7 +85,7 @@ jobs:
   build:
     name: Chocolatey Build
     #needs: ["create_latest"]
-    runs-on: windows-latest
+    runs-on: windows-2019
     defaults:
       run:
         working-directory: ~/Downloads/
@@ -113,10 +113,41 @@ jobs:
     - name: Choco add API key
       uses: crazy-max/ghaction-chocolatey@v2
       with:
-        args: apikey -k ${{ secrets.CHOCO_TOKEN }} -s https://chocolatey.org
+        args: apikey -k ${{ secrets.CHOCO_TOKEN }} --source https://push.chocolatey.org/
 
     - name: Push to Chocolatey
       uses: crazy-max/ghaction-chocolatey@v2
       with:
         args: push C:\Users\runneradmin\Downloads\rocketchat.nupkg
 
+
+#
+#      - name: Install AU
+#        run: cinst au
+#      - name: Build Package
+#        working-directory: ./dolt
+#        run: |
+#          ./update.ps1
+#        env:
+#          au_Push: 'false'
+#          au_Force: ${{ github.event.inputs.force }}
+#          VERSION: ${{ needs.get-version.outputs.version }}
+#      - name: Test Package Installer
+#        working-directory: ./dolt
+#        run: Test-Package $Install
+#      - name: Dolt Version
+#        run: |
+#          refreshenv
+#          $env:Path += ';C:\Program Files\Dolt\bin\'
+#          dolt version
+#      - uses: EndBug/add-and-commit@v7
+#        with:
+#          message: "[ga-bump-dolt-chocolatey] Bumping Dolt on Chocolatey ${{ needs.get-version.outputs.version }}"
+#          add: "."
+#          cwd: "."
+#      - name: Push Package to Chocolatey
+#        run: Push-Package
+#        working-directory: ./dolt
+#        env:
+#          api_key: ${{ secrets.CHOCO_API_KEY }}
+#          au_Force: ${{ github.event.inputs.force }}
