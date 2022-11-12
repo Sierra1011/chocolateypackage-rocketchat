@@ -100,6 +100,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Echo success
-      if: steps.meta.outputs.files_changed = 0
+      if: steps.meta.outputs.files_changed == 0
       run: echo "Version is current"
     
