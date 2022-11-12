@@ -97,15 +97,15 @@ jobs:
       with:
         name: latest
         path: ~/Downloads/
+
+    - name: Display structure of downloaded files
+      run: ls -R
+      working-directory: ~/Downloads/
       
     - name: Choco Package 
       uses: crazy-max/ghaction-chocolatey@v2
       with:
         args: pack ~/Downloads/latest/rocketchat.nuspec
-
-    - name: Display structure of downloaded files
-      run: ls -R
-      working-directory: ~/Downloads/
     
     - name: Rename file
       run: mv rocketchat.${{ env.version }}.nupkg rocketchat.nupkg
