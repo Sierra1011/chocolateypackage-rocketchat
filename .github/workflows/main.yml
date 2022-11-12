@@ -86,11 +86,8 @@ jobs:
     name: Chocolatey Build
     #needs: ["create_latest"]
     runs-on: windows-2019
-    defaults:
-      run:
-        working-directory: ~/Downloads/
     steps:
-    - uses: actions/checkout@v3
+    #- uses: actions/checkout@v3
     
     - name: Download latest files
       uses: actions/download-artifact@v3
@@ -111,7 +108,7 @@ jobs:
         args: pack C:\Users\runneradmin\Downloads\rocketchat.nuspec --output-directory C:\Users\runneradmin\Downloads\
     
     - name: Rename file
-      run: mv rocketchat.${{ env.version }}.nupkg rocketchat.nupkg
+      run: mv C:\Users\runneradmin\Downloads\rocketchat.${{ env.version }}.nupkg C:\Users\runneradmin\Downloads\rocketchat.nupkg
 
     - name: Choco add API key
       uses: crazy-max/ghaction-chocolatey@v2
