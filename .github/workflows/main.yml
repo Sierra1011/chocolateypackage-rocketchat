@@ -101,7 +101,7 @@ jobs:
     #- name: Workaround for zero-length files
     #  run: ChildItem C:\ProgramData\chocolatey\lib\*\*.nu* | where Length -eq 0 | Del
     - name: Upgrade Chocolatey
-      run: C:\ProgramData\Chocolatey\bin\choco.exe upgrade chocolatey
+      run: C:\ProgramData\Chocolatey\bin\choco.exe upgrade chocolatey -y -f
       #Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
     - name: Choco Package 
