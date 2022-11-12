@@ -1,9 +1,9 @@
 name: Update Version
 
 on: 
+  push:
   schedule:
     - cron:  '00 * * * *'
-  push:
   workflow_dispatch:
     
 jobs:

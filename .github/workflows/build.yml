@@ -1,6 +1,9 @@
 name: Package Rocketchat
 
-on: [workflow_dispatch]
+on:
+  schedule:
+    - cron:  '30 * * * *'
+  workflow_dispatch:
 
 jobs:
 
