@@ -93,32 +93,32 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: latest
-        path: C:\Users\runneradmin\Downloads
+        #path: C:\Users\runneradmin\Downloads
 
     #- name: Display structure of downloaded files
     #  run: ls -R
     #  working-directory: C:\Users\runneradmin\Downloads
     
-    - name: Workaround for zero-length files
-      run: ChildItem C:\ProgramData\chocolatey\lib\*\*.nu* | where Length -eq 0 | Del
+    #- name: Workaround for zero-length files
+    #  run: ChildItem C:\ProgramData\chocolatey\lib\*\*.nu* | where Length -eq 0 | Del
       
     - name: Choco Package 
-      uses: crazy-max/ghaction-chocolatey@v1.7.0
+      uses: crazy-max/ghaction-chocolatey@v2
       with:
-        args: pack C:\Users\runneradmin\Downloads\rocketchat.nuspec --output-directory C:\Users\runneradmin\Downloads\
+        args: pack #C:\Users\runneradmin\Downloads\rocketchat.nuspec --output-directory C:\Users\runneradmin\Downloads\
     
     - name: Rename file
-      run: mv C:\Users\runneradmin\Downloads\rocketchat.${{ env.version }}.nupkg C:\Users\runneradmin\Downloads\rocketchat.nupkg
+      run: mv rocketchat.${{ env.version }}.nupkg rocketchat.nupkg
 
     - name: Choco add API key
-      uses: crazy-max/ghaction-chocolatey@v1.7.0
+      uses: crazy-max/ghaction-chocolatey@v2
       with:
-        args: apikey -k ${{ secrets.CHOCO_TOKEN }} --source https://push.chocolatey.org/
+        args: apikey -y -k ${{ secrets.CHOCO_TOKEN }} --source https://push.chocolatey.org/
 
     - name: Push to Chocolatey
-      uses: crazy-max/ghaction-chocolatey@v1.7.0
+      uses: crazy-max/ghaction-chocolatey@v2
       with:
-        args: push C:\Users\runneradmin\Downloads\rocketchat.nupkg
+        args: push rocketchat.nupkg -s https://push.chocolatey.org/
 
 
 #
