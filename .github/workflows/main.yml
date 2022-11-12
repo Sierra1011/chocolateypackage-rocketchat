@@ -28,7 +28,6 @@ jobs:
         echo "hash=$HASH" >> $GITHUB_ENV
     - name: Make install script
       run: |
-        mkdir -p latest/tools/
         cat <<EOF > latest/tools/chocolateyinstall.ps1
         "$ErrorActionPreference = 'Stop';" 
         "Install-ChocolateyPackage -packageName 'rocketchat' -FileType exe -SilentArgs '/S /allusers' -Url 'https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${{ env.version }}/rocketchat-${{ env.version }}-win-x64.exe' -checksum '${{ env.hash }}' -checksumType 'sha256'" 
@@ -36,43 +35,43 @@ jobs:
     - name: Make nuspec
       run: |
         cat <<EOF > latest/rocketchat.nuspec
-        <?xml version="1.0" encoding="utf-8"?>
-        <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
-          <metadata>
-            <id>rocketchat</id>
-            <version>${{ env.version }}</version>
-            <packageSourceUrl>https://github.com/Sierra1011/chocolateypackage-rocketchat</packageSourceUrl>
-            <owners>Sierra1011</owners>
-            <title>Rocket.Chat</title>
-            <authors>Rocket.Chat</authors>
-            <projectUrl>https://rocket.chat/ </projectUrl>
-            <iconUrl>https://github.com/RocketChat/Rocket.Chat.Artwork/blob/master/Logos/icon.svg</iconUrl>
-            <licenseUrl>https://github.com/RocketChat/Rocket.Chat.Electron/blob/develop/LICENSE</licenseUrl>
-            <requireLicenseAcceptance>true</requireLicenseAcceptance>
-            <projectSourceUrl>https://github.com/RocketChat/Rocket.Chat.Electron</projectSourceUrl>
-            <mailingListUrl>https://rocket.chat/contact</mailingListUrl>
-            <bugTrackerUrl>https://github.com/RocketChat/Rocket.Chat.Electron/issues</bugTrackerUrl>
-            <tags>rocket.chat rocketchat rocket.chat+ admin chat IM</tags>
-            <summary>Official OSX, Windows, and Linux Desktop Clients for Rocket.Chat https://rocket.chat/ </summary>
-            <description>
-        The ultimate Free Open Source Solution for team communications. 
-        Rocket.Chat is free, unlimited and open source. Replace email, HipChat and Slack with the ultimate team chat software solution.
-        Communicate and collaborate using team chat and switch to video or audio calls with screen sharing for more efficient teamwork.
-        Improve productivity by discussing and sharing ideas, projects and files with real-time or asynchronous team chat.
-        With complete access to the source code, you can fully customize, extend or add new functionality to meet your requirements.
-        With Rocket.Chat LiveChat you can add real-time chat widgets to any website or mobile app and get more value from your team chat.
-        Replace other systems and use one communication platform to save time and money. 
-            </description>
-            <releaseNotes>
-
-            Release notes found here: https://github.com/RocketChat/Rocket.Chat.Electron/releases/tag/${{ env.version }}
-
-            </releaseNotes>
-          </metadata>
-          <files>
-            <file src="tools\**" target="tools" />
-          </files>
-        </package>
+          <?xml version="1.0" encoding="utf-8"?>
+          <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+            <metadata>
+              <id>rocketchat</id>
+              <version>${{ env.version }}</version>
+              <packageSourceUrl>https://github.com/Sierra1011/chocolateypackage-rocketchat</packageSourceUrl>
+              <owners>Sierra1011</owners>
+              <title>Rocket.Chat</title>
+              <authors>Rocket.Chat</authors>
+              <projectUrl>https://rocket.chat/ </projectUrl>
+              <iconUrl>https://github.com/RocketChat/Rocket.Chat.Artwork/blob/master/Logos/icon.svg</iconUrl>
+              <licenseUrl>https://github.com/RocketChat/Rocket.Chat.Electron/blob/develop/LICENSE</licenseUrl>
+              <requireLicenseAcceptance>true</requireLicenseAcceptance>
+              <projectSourceUrl>https://github.com/RocketChat/Rocket.Chat.Electron</projectSourceUrl>
+              <mailingListUrl>https://rocket.chat/contact</mailingListUrl>
+              <bugTrackerUrl>https://github.com/RocketChat/Rocket.Chat.Electron/issues</bugTrackerUrl>
+              <tags>rocket.chat rocketchat rocket.chat+ admin chat IM</tags>
+              <summary>Official OSX, Windows, and Linux Desktop Clients for Rocket.Chat https://rocket.chat/ </summary>
+              <description>
+          The ultimate Free Open Source Solution for team communications. 
+          Rocket.Chat is free, unlimited and open source. Replace email, HipChat and Slack with the ultimate team chat software solution.
+          Communicate and collaborate using team chat and switch to video or audio calls with screen sharing for more efficient teamwork.
+          Improve productivity by discussing and sharing ideas, projects and files with real-time or asynchronous team chat.
+          With complete access to the source code, you can fully customize, extend or add new functionality to meet your requirements.
+          With Rocket.Chat LiveChat you can add real-time chat widgets to any website or mobile app and get more value from your team chat.
+          Replace other systems and use one communication platform to save time and money. 
+              </description>
+              <releaseNotes>
+  
+              Release notes found here: https://github.com/RocketChat/Rocket.Chat.Electron/releases/tag/${{ env.version }}
+  
+              </releaseNotes>
+            </metadata>
+            <files>
+              <file src="tools\**" target="tools" />
+            </files>
+          </package>
         EOF 
     
     - name: Remove EXE
@@ -100,22 +99,27 @@ jobs:
     - name: Display structure of downloaded files
       run: ls -R
     
-    - name: Choco Upgrade
-      uses: crazy-max/ghaction-chocolatey@v2.1.0
-      with:
-        args: upgrade chocolatey -y -f
-    
-    - name: Refresh shell
-      run: refreshenv
+    - name: Get content for sanity purposes
+      run: |
+        cat latest/tools/chocolateyinstall.ps1
+        cat latest/rocketchat.nuspec    
 
-    - name: Workaround for zero-length files
-      run: ChildItem C:\ProgramData\chocolatey\lib\*\*.nu* | where Length -eq 0 | Del
+    #- name: Choco Upgrade
+    #  uses: crazy-max/ghaction-chocolatey@v2.1.0
+    #  with:
+    #    args: upgrade chocolatey -y -f
     
-    - name: Download latest nuspec files
-      uses: actions/download-artifact@v3
-      with:
-        name: latest
-        path: D:\a\chocolateypackage-rocketchat\chocolateypackage-rocketchat
+    #- name: Refresh shell
+    #  run: refreshenv
+
+    #- name: Workaround for zero-length files
+    #  run: ChildItem C:\ProgramData\chocolatey\lib\*\*.nu* | where Length -eq 0 | Del
+    
+    #- name: Download latest nuspec files
+    #  uses: actions/download-artifact@v3
+    #  with:
+    #    name: latest
+    #    path: D:\a\chocolateypackage-rocketchat\chocolateypackage-rocketchat
     
     - name: Choco Package 
       uses: crazy-max/ghaction-chocolatey@v2.1.0
