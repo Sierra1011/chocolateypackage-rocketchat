@@ -9,7 +9,7 @@ on: [push,workflow_dispatch]
 jobs:
   
   create_latest:
-    name: Create latest files
+    name: Update version
     runs-on: ubuntu-latest
     
     steps:
@@ -20,18 +20,21 @@ jobs:
       run: |
         VER=$(curl https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest | jq '.["tag_name"]' | tr -d \")
         echo "version=$VER" >> $GITHUB_ENV
+
     - name: Get file hash
       run: |
         VERSION=${{ env.version }}
         wget --no-verbose https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${{ env.version }}/rocketchat-${{ env.version }}-win-x64.exe
         HASH=$(sha256sum rocketchat-${{ env.version }}-win-x64.exe | awk "{print \$1}")
         echo "hash=$HASH" >> $GITHUB_ENV
+
     - name: Make install script
       run: |
         cat <<EOF > tools/chocolateyinstall.ps1
         \$ErrorActionPreference = 'Stop';
         Install-ChocolateyPackage -packageName 'rocketchat' -FileType exe -SilentArgs '/S /allusers' -Url 'https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/${{ env.version }}/rocketchat-${{ env.version }}-win-x64.exe' -checksum '${{ env.hash }}' -checksumType 'sha256'
         EOF
+
     - name: Make nuspec
       run: |
         cat << EOF > rocketchat.nuspec
@@ -83,12 +86,6 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         commit_message: Updated to version ${{ env.version }}
 
-    #- name: Upload latest
-    #  uses: actions/upload-artifact@v3
-    #  with:
-    #    name: latest
-    #    path: latest/
-
   build:
     name: Chocolatey Build
     #needs: ["create_latest"]
@@ -96,40 +93,18 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Display structure of downloaded files
-      run: ls -R
-    
     - name: Get content for sanity purposes
       run: |
         cat tools/chocolateyinstall.ps1
         cat rocketchat.nuspec    
 
-    #- name: Choco Upgrade
-    #  uses: crazy-max/ghaction-chocolatey@v2.1.0
-    #  with:
-    #    args: upgrade chocolatey -y -f
-    
-    #- name: Refresh shell
-    #  run: refreshenv
-
-    #- name: Workaround for zero-length files
-    #  run: ChildItem C:\ProgramData\chocolatey\lib\*\*.nu* | where Length -eq 0 | Del
-    
-    #- name: Download latest nuspec files
-    #  uses: actions/download-artifact@v3
-    #  with:
-    #    name: latest
-    #    path: D:\a\chocolateypackage-rocketchat\chocolateypackage-rocketchat
-    
     - name: Choco Package 
       uses: crazy-max/ghaction-chocolatey@v2.1.0
       with:
         args: pack 
-      #run: C:\ProgramData\Chocolatey\bin\choco.exe pack
-      #  #C:\Users\runneradmin\Downloads\rocketchat.nuspec --output-directory C:\Users\runneradmin\Downloads\
 
     - name: Rename file
-      run: mv rocketchat.${{ env.version }}.nupkg rocketchat.nupkg
+      run: mv rocketchat*.nupkg rocketchat.nupkg
 
     - name: Choco add API key
       uses: crazy-max/ghaction-chocolatey@v2.1.0
@@ -140,35 +115,3 @@ jobs:
       uses: crazy-max/ghaction-chocolatey@v2.1.0
       with:
         args: push rocketchat.nupkg -s https://push.chocolatey.org/
-
-
-#
-#      - name: Install AU
-#        run: cinst au
-#      - name: Build Package
-#        working-directory: ./dolt
-#        run: |
-#          ./update.ps1
-#        env:
-#          au_Push: 'false'
-#          au_Force: ${{ github.event.inputs.force }}
-#          VERSION: ${{ needs.get-version.outputs.version }}
-#      - name: Test Package Installer
-#        working-directory: ./dolt
-#        run: Test-Package $Install
-#      - name: Dolt Version
-#        run: |
-#          refreshenv
-#          $env:Path += ';C:\Program Files\Dolt\bin\'
-#          dolt version
-#      - uses: EndBug/add-and-commit@v7
-#        with:
-#          message: "[ga-bump-dolt-chocolatey] Bumping Dolt on Chocolatey ${{ needs.get-version.outputs.version }}"
-#          add: "."
-#          cwd: "."
-#      - name: Push Package to Chocolatey
-#        run: Push-Package
-#        working-directory: ./dolt
-#        env:
-#          api_key: ${{ secrets.CHOCO_API_KEY }}
-#          au_Force: ${{ github.event.inputs.force }}
