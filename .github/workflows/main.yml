@@ -93,11 +93,10 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: latest
-        #path: C:\Users\runneradmin\Downloads
+        path: D:\a\chocolateypackage-rocketchat\chocolateypackage-rocketchat
 
-    #- name: Display structure of downloaded files
-    #  run: ls -R
-    #  working-directory: C:\Users\runneradmin\Downloads
+    - name: Display structure of downloaded files
+      run: ls -R
     
     #- name: Workaround for zero-length files
     #  run: ChildItem C:\ProgramData\chocolatey\lib\*\*.nu* | where Length -eq 0 | Del
