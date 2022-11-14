@@ -6,33 +6,53 @@ on:
   workflow_dispatch:
 
 jobs:
-
-  build:
-    name: Chocolatey Build
-    #needs: ["create_latest"]
-    runs-on: windows-latest
+  
+  version_test:
+    name: Check latest version
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repo
+      uses: actions/checkout@v3
 
-    - name: Get content for sanity purposes
+    - name: Get Choco's latest version
+      uses: crazy-max/ghaction-chocolatey@v2.1.0
+      with:
+        args: search rocketchat -r -e
+    
+    - name: Get code version
       run: |
-        cat tools/chocolateyinstall.ps1
-        cat rocketchat.nuspec    
+        LOCAL=$(cat ${{ github.workspace }}/VERSION)
 
-    - name: Choco Package 
-      uses: crazy-max/ghaction-chocolatey@v2.1.0
-      with:
-        args: pack 
 
-    - name: Rename file
-      run: mv rocketchat*.nupkg rocketchat.nupkg
-
-    - name: Choco add API key
-      uses: crazy-max/ghaction-chocolatey@v2.1.0
-      with:
-        args: apikey -y -k ${{ secrets.CHOCO_TOKEN }} --source https://push.chocolatey.org/
-
-    - name: Push to Chocolatey
-      uses: crazy-max/ghaction-chocolatey@v2.1.0
-      with:
-        args: push rocketchat.nupkg -s https://push.chocolatey.org/
+#  build:
+#    name: Chocolatey Build
+#    needs: ["version_test"]
+#    runs-on: windows-latest
+#    steps:
+#    - uses: actions/checkout@v3
+#
+#    - name: Get content for sanity purposes
+#      run: |
+#        cat tools/chocolateyinstall.ps1
+#        cat rocketchat.nuspec    
+#
+#    - name: Choco Package 
+#      uses: crazy-max/ghaction-chocolatey@v2.1.0
+#      with:
+#        args: pack 
+#
+#    - name: Rename file
+#      run: mv rocketchat*.nupkg rocketchat.nupkg
+#
+#    - name: Choco add API key
+#      uses: crazy-max/ghaction-chocolatey@v2.1.0
+#      with:
+#        args: apikey -y -k ${{ secrets.CHOCO_TOKEN }} --source https://push.chocolatey.org/
+#
+#    - name: Push to Chocolatey
+#      uses: crazy-max/ghaction-chocolatey@v2.1.0
+#      with:
+#        args: push rocketchat.nupkg -s https://push.chocolatey.org/
+#
