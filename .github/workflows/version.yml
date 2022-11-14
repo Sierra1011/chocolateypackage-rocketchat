@@ -3,7 +3,7 @@ name: Update Version
 concurrency: ci-version
 
 on: 
-  push:
+  #push:
   schedule:
     - cron:  '00 * * * *'
   workflow_dispatch:
@@ -21,8 +21,7 @@ jobs:
 
     - name: Get latest version
       run: |
-        VER="3.8.11"
-        #$(curl https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest | jq '.["tag_name"]' | tr -d \")
+        VER=$(curl https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest | jq '.["tag_name"]' | tr -d \")
         echo "version=$VER" >> $GITHUB_ENV
 
     - name: Get file hash
