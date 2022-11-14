@@ -5,7 +5,8 @@ concurrency: ci-build
 on:
   push: 
     branches: [main]
-    paths: [VERSION]
+    paths-ignore:
+      - ".github/**"
   workflow_dispatch:
 
 jobs:
