@@ -1,5 +1,7 @@
 name: Update Version
 
+concurrency: ci-version
+
 on: 
   #push:
   schedule:

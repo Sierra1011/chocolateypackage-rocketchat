@@ -1,5 +1,7 @@
 name: Package Rocketchat
 
+concurrency: ci-build
+
 on:
   push: 
     branches: [main]
