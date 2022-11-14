@@ -21,7 +21,8 @@ jobs:
 
     - name: Get latest version
       run: |
-        VER=$(curl https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest | jq '.["tag_name"]' | tr -d \")
+        VER="3.8.12"
+        #$(curl https://api.github.com/repos/RocketChat/Rocket.Chat.Electron/releases/latest | jq '.["tag_name"]' | tr -d \")
         echo "version=$VER" >> $GITHUB_ENV
 
     - name: Get file hash
