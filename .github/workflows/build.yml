@@ -18,10 +18,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Get content for sanity purposes
-      run: |
-        cat tools/chocolateyinstall.ps1
-        cat rocketchat.nuspec    
+    #- name: Get content for sanity purposes
+    #  run: |
+    #    cat tools/chocolateyinstall.ps1
+    #    cat rocketchat.nuspec    
 
     - name: Choco Package 
       uses: crazy-max/ghaction-chocolatey@v2.1.0
