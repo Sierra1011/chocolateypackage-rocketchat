@@ -11,19 +11,24 @@ jobs:
     name: Check latest version
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    outputs:
+      buildreq: ${{ steps.built.outputs.tested }}
     
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
 
     - name: Get Choco's latest version
-      uses: crazy-max/ghaction-chocolatey@v2.1.0
-      with:
-        args: search rocketchat -r -e
-    
+      run: CHOCOVER=$(/usr/bin/docker run --rm ghcr.io/crazy-max/ghaction-chocolatey search rocketchat -r -e | cut -d "|" -f 2)
+      
     - name: Get code version
+      run: LOCAL=$(cat ${{ github.workspace }}/VERSION)
+
+    - name: Compare versions
+      id: compare
       run: |
-        LOCAL=$(cat ${{ github.workspace }}/VERSION)
+         if [ "$LOCAL"=="$CHOCOVER" ]; then echo true; else echo false; fi
+      
 
 
 #  build:
