@@ -11,6 +11,7 @@ jobs:
   update_latest:
     name: Update version
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     
     steps:
     - name: Checkout repo
@@ -79,6 +80,9 @@ jobs:
     
     - name: Remove EXE
       run: rm rocketchat*.exe
+
+    - name: Write latest version to file
+      run: echo ${{ env.version }} >> VERSION
 
     - name: Commit and push changes
       id: push
