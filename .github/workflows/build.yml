@@ -1,63 +1,39 @@
 name: Package Rocketchat
 
 on:
-  #schedule:
-  #  - cron:  '30 * * * *'
+  push: 
+    branches: [main]
+    paths: [VERSION]
   workflow_dispatch:
 
 jobs:
-  
-  version_test:
-    name: Check latest version
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    outputs:
-      buildreq: ${{ steps.built.outputs.tested }}
-    
+
+  build:
+    name: Chocolatey Build
+    runs-on: windows-latest
+    timeout-minutes: 15
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
-    - name: Get Choco's latest version
-      run: CHOCOVER=$(/usr/bin/docker run --rm ghcr.io/crazy-max/ghaction-chocolatey search rocketchat -r -e | cut -d "|" -f 2)
-      
-    - name: Get code version
-      run: LOCAL=$(cat ${{ github.workspace }}/VERSION)
-
-    - name: Compare versions
-      id: compare
+    - name: Get content for sanity purposes
       run: |
-         if [ "$LOCAL"=="$CHOCOVER" ]; then echo true; else echo false; fi
-      
+        cat tools/chocolateyinstall.ps1
+        cat rocketchat.nuspec    
 
+    - name: Choco Package 
+      uses: crazy-max/ghaction-chocolatey@v2.1.0
+      with:
+        args: pack 
 
-#  build:
-#    name: Chocolatey Build
-#    needs: ["version_test"]
-#    runs-on: windows-latest
-#    steps:
-#    - uses: actions/checkout@v3
-#
-#    - name: Get content for sanity purposes
-#      run: |
-#        cat tools/chocolateyinstall.ps1
-#        cat rocketchat.nuspec    
-#
-#    - name: Choco Package 
-#      uses: crazy-max/ghaction-chocolatey@v2.1.0
-#      with:
-#        args: pack 
-#
-#    - name: Rename file
-#      run: mv rocketchat*.nupkg rocketchat.nupkg
-#
-#    - name: Choco add API key
-#      uses: crazy-max/ghaction-chocolatey@v2.1.0
-#      with:
-#        args: apikey -y -k ${{ secrets.CHOCO_TOKEN }} --source https://push.chocolatey.org/
-#
-#    - name: Push to Chocolatey
-#      uses: crazy-max/ghaction-chocolatey@v2.1.0
-#      with:
-#        args: push rocketchat.nupkg -s https://push.chocolatey.org/
-#
+    - name: Rename file
+      run: mv rocketchat*.nupkg rocketchat.nupkg
+
+    - name: Choco add API key
+      uses: crazy-max/ghaction-chocolatey@v2.1.0
+      with:
+        args: apikey -y -k ${{ secrets.CHOCO_TOKEN }} --source https://push.chocolatey.org/
+
+    - name: Push to Chocolatey
+      uses: crazy-max/ghaction-chocolatey@v2.1.0
+      with:
+        args: push rocketchat.nupkg -s https://push.chocolatey.org/
