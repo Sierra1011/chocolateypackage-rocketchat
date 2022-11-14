@@ -3,7 +3,7 @@ name: Update Version
 concurrency: ci-version
 
 on: 
-  #push:
+  push:
   schedule:
     - cron:  '00 * * * *'
   workflow_dispatch:
