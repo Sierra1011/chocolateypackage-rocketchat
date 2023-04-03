@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>rocketchat</id>
-    <version>3.9.0</version>
+    <version>3.9.1</version>
     <packageSourceUrl>https://github.com/Sierra1011/chocolateypackage-rocketchat</packageSourceUrl>
     <owners>Sierra1011</owners>
     <title>Rocket.Chat</title>
@@ -27,7 +27,7 @@ Replace other systems and use one communication platform to save time and money.
     </description>
     <releaseNotes>
 
-    Release notes found here: https://github.com/RocketChat/Rocket.Chat.Electron/releases/tag/3.9.0
+    Release notes found here: https://github.com/RocketChat/Rocket.Chat.Electron/releases/tag/3.9.1
 
     </releaseNotes>
   </metadata>
