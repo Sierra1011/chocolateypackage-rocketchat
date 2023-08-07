@@ -8,7 +8,7 @@
     <title>Rocket.Chat</title>
     <authors>Rocket.Chat</authors>
     <projectUrl>https://rocket.chat/ </projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/RocketChat/Rocket.Chat.Artwork/87f4bbcd495cf54112dc002be7ac72c6688a81df/Logos/2020/png/icon-red.png</iconUrl>
+    <iconUrl>https://github.com/RocketChat/Rocket.Chat.Artwork/blob/master/Logos/icon.svg</iconUrl>
     <licenseUrl>https://github.com/RocketChat/Rocket.Chat.Electron/blob/develop/LICENSE</licenseUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <projectSourceUrl>https://github.com/RocketChat/Rocket.Chat.Electron</projectSourceUrl>
