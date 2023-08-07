@@ -24,7 +24,7 @@ jobs:
     #    cat rocketchat.nuspec    
 
     - name: Choco Package 
-      uses: crazy-max/ghaction-chocolatey@v2.1.0
+      uses: crazy-max/ghaction-chocolatey@v2.2.0
       with:
         args: pack 
 
@@ -32,11 +32,11 @@ jobs:
       run: mv rocketchat*.nupkg rocketchat.nupkg
 
     - name: Choco add API key
-      uses: crazy-max/ghaction-chocolatey@v2.1.0
+      uses: crazy-max/ghaction-chocolatey@v2.2.0
       with:
         args: apikey -y -k ${{ secrets.CHOCO_TOKEN }} --source https://push.chocolatey.org/
 
     - name: Push to Chocolatey
-      uses: crazy-max/ghaction-chocolatey@v2.1.0
+      uses: crazy-max/ghaction-chocolatey@v2.2.0
       with:
         args: push rocketchat.nupkg -s https://push.chocolatey.org/
